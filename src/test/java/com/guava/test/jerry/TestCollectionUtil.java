@@ -2,6 +2,7 @@ package com.guava.test.jerry;
 
 import com.google.common.collect.*;
 import com.google.common.primitives.Ints;
+import com.guava.test.jerry.model.GuavaObjectModel;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -48,5 +49,15 @@ public class TestCollectionUtil extends TestCase {
 
         System.out.println(Sets.symmetricDifference(primes, wordsWithPrimeLength).immutableCopy());//返回两个集合差集
 
+        GuavaObjectModel guavaObjectModel1 = new GuavaObjectModel("hello1", "world1", "manager", GuavaObjectModel.Gender.FEMALE);
+        GuavaObjectModel guavaObjectModel2 = new GuavaObjectModel("hello2", "world2", "manager", GuavaObjectModel.Gender.FEMALE);
+        GuavaObjectModel guavaObjectModel3 = new GuavaObjectModel("hello3", "world3", "manager", GuavaObjectModel.Gender.FEMALE);
+        GuavaObjectModel guavaObjectModel4 = new GuavaObjectModel("hello4", "world4", "manager", GuavaObjectModel.Gender.FEMALE);
+
+        Set<GuavaObjectModel> setLefts = ImmutableSet.of(guavaObjectModel1, guavaObjectModel4, guavaObjectModel3);
+        Set<GuavaObjectModel> setRights = ImmutableSet.of(guavaObjectModel1, guavaObjectModel2, guavaObjectModel3, guavaObjectModel4);
+
+        System.out.println(Sets.difference(setRights, setLefts));
+        System.out.println(Sets.symmetricDifference(setLefts, setRights));
     }
 }
